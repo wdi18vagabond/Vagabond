@@ -9,8 +9,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(user_params)
-    redirect_to user_path(@user)
+    @user = User.new(user_params)
+    if @user.save
+      sign_in(@user)
+      redirect_to user_path(@user)
+    else
+      redirect_to sign_in_path
+    end
   end
 
   def show
@@ -23,10 +28,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    # @use
+    set_user
+    @user.update_attributes(user_params)
+    redirect_to user_path(@user)
   end
 
   def destroy
+    set_user
+    @user.destroy()
+    redirect_to root_path
   end
 
   private
