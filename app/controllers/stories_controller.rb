@@ -1,7 +1,6 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-  validate :title, :body, presence: true
-  belongs_to :user
+
 
   # GET /stories
   # GET /stories.json
