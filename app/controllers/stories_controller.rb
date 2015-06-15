@@ -1,10 +1,11 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
-
   # GET /stories
   # GET /stories.json
   def index
     @stories = Story.all
+
+    render :index
   end
 
   # GET /stories/1

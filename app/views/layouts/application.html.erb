@@ -8,6 +8,17 @@
 </head>
 <body>
 
+<%= link_to "Home", root_path %>
+  <% if current_user %>
+    <%= form_for @user, url: "/sessions", method: "delete" do |f| %>
+      <%= f.submit "sign out" %>
+    <% end %>
+  <% else %>
+    <%= link_to "Sign In", sign_in_path %>
+    <%= link_to "Sign Up", new_user_path %>
+  <% end %>
+
+<% console %>
 <%= yield %>
 
 </body>
