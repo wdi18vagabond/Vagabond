@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  
+
  resources :users
 
  root to: "users#index"
-end
-
+ 
+ end
 #    Prefix Verb   URI Pattern               Controller#Action
 #     users GET    /users(.:format)          users#index
 #           POST   /users(.:format)          users#create
@@ -14,4 +14,7 @@ end
 #           PATCH  /users/:id(.:format)      users#update
 #           PUT    /users/:id(.:format)      users#update
 #           DELETE /users/:id(.:format)      users#destroy
+
+#      root GET    /                         users#index
+
 #      root GET    /                         users#index
