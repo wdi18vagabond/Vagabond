@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-before 
   def index
     set_user
   end
