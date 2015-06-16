@@ -1,6 +1,7 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
   before_action :set_user
+  before_action :signed_in?, except: [:index, :show]
   # GET /stories
   # GET /stories.json
   def index
