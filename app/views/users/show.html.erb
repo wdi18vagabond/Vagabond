@@ -3,11 +3,11 @@
 
 <h1>Hello <%= @user.first_name %></h1>
 
-<%= image_tag gravatar_url(@user.email, 64), alt: "" %>
+<%= image_tag gravatar_url(@user.email, 200), alt: "" %>
 
-<%= @user.city %>
-
+<p><%= @user.city %><p>
+<p><b>User since:</b> <%= @user.created_at.strftime("%B %Y") %><p>
 
 <% if current_user == @user %>
-  <%= link_to "Delete", delete_user_path(@user), method: "delete" %>
+  <%= link_to "Edit", edit_user_path(@user) %>
 <% end %>
