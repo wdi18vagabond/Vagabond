@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       sign_in(@user)
       redirect_to user_path(@user)
     else
-      redirect_to sign_in_path
+      flash[:notice] = "Email already in use"
+      redirect_to new_user_path
     end
   end
 
@@ -30,8 +31,14 @@ class UsersController < ApplicationController
 
   def update
     set_user
-    @user.update_attributes(user_params)
-    redirect_to user_path(@user)
+    @user.assign_attributes(user_params)
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      flash[:notice] = "Email already in use"
+      redirect_to edit_user_path
+    end
+    
   end
 
   def destroy

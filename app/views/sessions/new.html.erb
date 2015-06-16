@@ -1,6 +1,10 @@
 <h1>Sessions#new</h1>
 <p>Find me in app/views/sessions/new.html.erb</p>
 
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
 <%= form_for @user, url: "/sessions", method: "post" do |f| %>
   <%= f.email_field :email, placeholder: "Email" %>
   <%= f.password_field :password, placeholder: "Password" %>
