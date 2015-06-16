@@ -9,9 +9,9 @@ Rails.application.routes.draw do
  delete "/users", to: "users#destroy", as: "delete_user"
  delete "/sessions", to: "sessions#destroy", as: "sign_out"
 
+
 end
 
-#       Prefix Verb   URI Pattern                  Controller#Action
 #        users GET    /users(.:format)             users#index
 #              POST   /users(.:format)             users#create
 #     new_user GET    /users/new(.:format)         users#new

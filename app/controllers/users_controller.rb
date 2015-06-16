@@ -45,6 +45,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy()
+    sign_out
     redirect_to root_path
   end
 
