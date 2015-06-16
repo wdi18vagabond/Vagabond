@@ -2,6 +2,7 @@ Rails.application.routes.draw do
  resources :users, except: :destroy
  resources :sessions, except: [:new, :destroy]
  resources :stories
+ resources :cities
 
  root to: "users#index"
  get "/sign_in", to: "sessions#new"
@@ -32,8 +33,15 @@ end
 #              PATCH  /stories/:id(.:format)       stories#update
 #              PUT    /stories/:id(.:format)       stories#update
 #              DELETE /stories/:id(.:format)       stories#destroy
+#       cities GET    /cities(.:format)            cities#index
+#              POST   /cities(.:format)            cities#create
+#     new_city GET    /cities/new(.:format)        cities#new
+#    edit_city GET    /cities/:id/edit(.:format)   cities#edit
+#         city GET    /cities/:id(.:format)        cities#show
+#              PATCH  /cities/:id(.:format)        cities#update
+#              PUT    /cities/:id(.:format)        cities#update
+#              DELETE /cities/:id(.:format)        cities#destroy
 #         root GET    /                            users#index
 #      sign_in GET    /sign_in(.:format)           sessions#new
 #  delete_user DELETE /users(.:format)             users#destroy
-#              DELETE /sessions(.:format)          sessions#destroy
-
+#     sign_out DELETE /sessions(.:format)          sessions#destroy

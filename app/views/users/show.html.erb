@@ -2,6 +2,7 @@
 <p>Find me in app/views/users/show.html.erb</p>
 
 <h1>Hello <%= @user.first_name %></h1>
+<%= @user.city %>
 
 <% if current_user == @user %>
   <%= link_to "Delete", delete_user_path(@user), method: "delete" %>
