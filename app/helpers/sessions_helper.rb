@@ -11,13 +11,11 @@ module SessionsHelper
 
   def current_user
     @current_user || User.find_by({id: session[:user_id]})
-
   end
 
   def sign_out
     @current_user = nil
     session[:user_id] = nil
-    redirect_to sign_in_path
   end
 
 end

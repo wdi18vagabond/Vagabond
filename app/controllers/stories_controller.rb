@@ -25,17 +25,17 @@ class StoriesController < ApplicationController
   # POST /stories
   # POST /stories.json
   def create
-    @story = Story.new(story_params)
-
-    respond_to do |format|
-      if @story.save
-        format.html { redirect_to @story, notice: 'Story was successfully created.' }
-        format.json { render :show, status: :created, location: @story }
-      else
-        format.html { render :new }
-        format.json { render json: @story.errors, status: :unprocessable_entity }
-      end
-    end
+    @story = current_user.stories.create(story_params)
+    # respond_to do |format|
+    #   if @story.save
+    #     format.html { redirect_to @story, notice: 'Story was successfully created.' }
+    #     format.json { render :show, status: :created, location: @story }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @story.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    redirect_to story_path(@story)
   end
 
   # PATCH/PUT /stories/1
@@ -70,6 +70,6 @@ class StoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params[:story]
+      params.require(:story).permit(:title, :body)
     end
 end
