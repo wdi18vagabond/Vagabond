@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+  before_action :signed_in?, only: [:edit, :destroy]
+  before_action :set_user, only: [:index, :update, :destroy]
+
   def index
     set_user
   end
@@ -11,10 +15,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in(@user)
+      sign_in(@user) 
       redirect_to user_path(@user)
     else
-      redirect_to sign_in_path
+      flash[:notice] = "Email already in use"
+      redirect_to new_user_path
     end
   end
 
@@ -23,18 +28,23 @@ class UsersController < ApplicationController
   end
 
   def edit
-    set_user
     @user = User.find(params[:id])
+    unless current_user == @user
+      redirect_to user_path(@user)
+    end
   end
 
   def update
-    set_user
-    @user.update_attributes(user_params)
-    redirect_to user_path(@user)
+    @user.assign_attributes(user_params)
+    if @user.save
+      redirect_to user_path(@user)
+    else
+      flash[:notice] = "Email already in use"
+      redirect_to edit_user_path
+    end
   end
 
   def destroy
-    set_user
     @user.destroy()
     redirect_to root_path
   end
