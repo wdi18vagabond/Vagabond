@@ -1,16 +1,17 @@
 class StoriesController < ApplicationController
   before_action :set_story, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
   # GET /stories
   # GET /stories.json
   def index
     @stories = Story.all
-
     render :index
   end
 
   # GET /stories/1
   # GET /stories/1.json
   def show
+
   end
 
   # GET /stories/new
@@ -35,7 +36,6 @@ class StoriesController < ApplicationController
         format.json { render json: @story.errors, status: :unprocessable_entity }
       end
     end
-    redirect_to story_path(@story)
   end
 
   # PATCH/PUT /stories/1
@@ -68,8 +68,12 @@ class StoriesController < ApplicationController
       @story = Story.find(params[:id])
     end
 
+    def set_user
+      @user = current_user
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def story_params
-      params.require(:story).permit(:title, :body)
+      params.require(:story).permit(:title, :body, :city_id)
     end
 end

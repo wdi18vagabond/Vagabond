@@ -1,13 +1,13 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h3>Profile</h3>
+<h1>Hello, <%= @user.first_name %></h1>
+<div>Current City: <%= @user.city %></div>
 
-<h1>Hello <%= @user.first_name %></h1>
-
-<%= image_tag gravatar_url(@user.email, 64), alt: "" %>
-
-<%= @user.city %>
-
+<%= image_tag gravatar_url(@user.email, 200), alt: "" %>
+<p><%= @user.username %></p>
+<p>Joined <%= @user.created_at.strftime("%B %Y") %><p>
 
 <% if current_user == @user %>
   <%= link_to "Delete", delete_user_path(@user), method: "delete" %>
+<% else %>
+  <%= link_to "Edit", edit_user_path(@user) %>
 <% end %>
