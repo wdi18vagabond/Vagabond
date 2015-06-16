@@ -4,6 +4,7 @@ class CitiesController < ApplicationController
 
 	def index
 		@cities = City.all
+		@continents = ["North America", "South America", "Europe", "Asia", "Australia", "Africa"]
 		render :index
 	end
 
