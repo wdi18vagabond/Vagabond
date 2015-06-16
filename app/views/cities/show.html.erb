@@ -1,0 +1,12 @@
+<h1><%= @city.name %></h1>
+
+<% @city.stories.each do |s| %>
+	<div>
+		<h2><%= s.title %></h2>
+	</div>
+	<div>
+		<h4><%= s.body %></h4>
+	</div>
+<% end %>
+
+New Post: <%= link_to "New Post", new_story_path %>
