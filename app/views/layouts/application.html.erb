@@ -2,22 +2,20 @@
 <html>
 <head>
   <title>VagabondApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <%= render partial: "layouts/navbarin", locals: {user: @user} %>
 
-<%= link_to "Home", root_path %>
-  <% if current_user %>
-    <%= link_to "Sign Out", sign_out_path, method: "delete" %>
+  <!-- CONTAINER START -->
+  <div class="container">
+  </div>
+  <!-- CONTAINER END -->
 
-  <% else %>
-    <%= link_to "Sign In", sign_in_path %>
-    <%= link_to "Sign Up", new_user_path %>
-  <% end %>
 
-<% console %>
 <%= yield %>
 
 </body>
