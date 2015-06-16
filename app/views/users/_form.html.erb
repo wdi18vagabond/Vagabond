@@ -1,7 +1,9 @@
 <%= form_for user do |f| %>
+  <%= f.text_field :username, placeholder: "Username" %>
+  <%= f.email_field :email, placeholder: "Email" %>
   <%= f.text_field :first_name, placeholder: "First Name" %>
   <%= f.text_field :last_name, placeholder: "Last Name" %>
-  <%= f.email_field :email, placeholder: "Email" %>
+  <%= f.text_field :city, placeholder: "City" %>
   <%= f.password_field :password, placeholder: "password" %>
   <%= f.password_field :password_confirmation, placeholder: "confirm password" %>
 
