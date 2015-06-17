@@ -1,12 +1,22 @@
 <h1><%= @city.name %></h1>
 
 <% @city.stories.order("created_at DESC").each do |s| %>
-	<div>
-		<h2><%= link_to s.title, story_path(s) %></h2>
-	</div>
-	<div>
-		<h4><%=h truncate(s.body, :length =>70) %></h4>
-	</div>
+
+<div class="media">
+   <a id="user-img" class="pull-left">
+		<%= image_tag gravatar_url(User.find(s.user_id).email, 100), alt: "" %>
+	 </a>
+   <div class="media-body">
+      <h4 class="media-heading"><%= link_to s.title, story_path(s) %> </h4>
+
+
+			<h5>by: <%= User.find(s.user_id).first_name %></h5>
+
+
+
+			<%=h truncate(s.body, :length =>70) %>
+   </div>
+</div>
 <% end %>
 
 New Post: <%= link_to "New Post", new_story_path %>
