@@ -18,8 +18,8 @@ class UsersController < ApplicationController
       sign_in(@user) 
       redirect_to user_path(@user)
     else
-      flash[:notice] = "Email already in use"
-      # redirect_to new_user_path
+      flash[:notice] = @user.errors.full_messages.to_sentence
+      redirect_to new_user_path
     end
   end
 
