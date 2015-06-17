@@ -1,17 +1,18 @@
 Rails.application.routes.draw do
  resources :users, except: :destroy
  resources :sessions, except: [:new, :destroy]
- resources :stories
+ resources :stories, except: :new
  resources :cities
 
  root to: "users#index"
  get "/sign_in", to: "sessions#new"
  delete "/users", to: "users#destroy", as: "delete_user"
  delete "/sessions", to: "sessions#destroy", as: "sign_out"
+ 
+ get "cities/new/:id", to: "stories#new", as: "new_story"
 
 end
 
-#       Prefix Verb   URI Pattern                  Controller#Action
 #        users GET    /users(.:format)             users#index
 #              POST   /users(.:format)             users#create
 #     new_user GET    /users/new(.:format)         users#new

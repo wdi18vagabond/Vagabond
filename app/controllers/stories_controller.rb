@@ -17,7 +17,10 @@ class StoriesController < ApplicationController
 
   # GET /stories/new
   def new
+    set_city
     @story = Story.new
+    # redirect_to new_story_path
+
   end
 
   # GET /stories/1/edit
@@ -67,6 +70,10 @@ class StoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_story
       @story = Story.find(params[:id])
+    end
+
+    def set_city
+      @city = City.find(params[:id])
     end
 
     def set_user

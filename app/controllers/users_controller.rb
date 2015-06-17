@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       flash[:notice] = "Email already in use"
-      redirect_to new_user_path
+      # redirect_to new_user_path
     end
   end
 
@@ -46,6 +46,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy()
+    sign_out
     redirect_to root_path
   end
 

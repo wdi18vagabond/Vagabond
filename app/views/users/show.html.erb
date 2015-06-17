@@ -1,11 +1,26 @@
-<h3>Profile</h3>
-<h1>Hello, <%= @user.first_name %></h1>
-<div>Current City: <%= @user.city %></div>
+<div class="col-md-12">
+  <h1><%= @user.username %></h1>
+</div>
 
-<%= image_tag gravatar_url(@user.email, 200), alt: "" %>
-<p><%= @user.username %></p>
-<p>Joined <%= @user.created_at.strftime("%B %Y") %><p>
+<div class="col-md-3"> 
 
-<% if current_user == @user %>
-  <%= link_to "Edit", edit_user_path(@user) %>
-<% end %>
+  <%= image_tag gravatar_url(@user.email, 200), alt: "" %>
+  <p><%= @user.first_name + " " + @user.last_name %></p>
+  <p><%= @user.city %></p>
+  <p>Joined <%= @user.created_at.strftime("%B %Y") %></p>
+
+  <% if current_user == @user %>
+    <%= link_to "Edit Profile", edit_user_path(@user) %>
+  <% end %>
+</div>
+
+<div class="col-md-7">
+  <h4>Travel Logs</h4>
+  <% @user.stories.each do |s| %>
+    <h3><%= link_to s.title, story_path(s) %></h3>
+    <p><%=h truncate(s.body, :length =>70) %></p>
+    <% if current_user == @user %>
+      <%= link_to 'Edit', edit_story_path(s) %>
+    <% end %>
+  <% end %>
+</div>
