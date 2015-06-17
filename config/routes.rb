@@ -8,7 +8,7 @@ Rails.application.routes.draw do
  get "/sign_in", to: "sessions#new"
  delete "/users", to: "users#destroy", as: "delete_user"
  delete "/sessions", to: "sessions#destroy", as: "sign_out"
- 
+
  get "cities/new/:id", to: "stories#new", as: "new_story"
 
 end
