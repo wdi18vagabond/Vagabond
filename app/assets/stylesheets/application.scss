@@ -25,11 +25,11 @@ body {
           padding-top: 50px;
           position: relative;
       }
-      
+
       pre {
           tab-size: 8;
       }
-      
+
       @media screen and (max-width: 768px) {
           .side-collapse-container{
               width:100%;
@@ -57,7 +57,7 @@ body {
 
 // STORY SHOW?
 
-.wrapper {    
+.wrapper {
   margin-top: 80px;
   margin-bottom: 20px;
 }
@@ -67,7 +67,7 @@ body {
   padding: 30px 38px 66px;
   margin: 0 auto;
   background-color: #eee;
-  border: 3px dotted rgba(0,0,0,0.1);  
+  border: 3px dotted rgba(0,0,0,0.1);
   }
 
 .form-signin-heading {
