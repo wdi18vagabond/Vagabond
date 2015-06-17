@@ -18,7 +18,7 @@
   <h4>Stories</h4>
   <% @user.stories.each do |s| %>
     <h3><%= link_to s.title, story_path(s) %></h3>
-    <p><%=h truncate(s.body, :length =>70) %></p>
+    <p><%= h truncate(s.body, :length =>70) %></p>
     <% if current_user == @user %>
       <%= link_to 'Edit', edit_story_path(s) %>
     <% end %>
