@@ -8,12 +8,12 @@ var vagabond_map = {};
 vagabond_map.ready = function() {
 	address = $('#city_name h2').text();
   console.log(address, "THIS IS ADDRESS")
-  initialize();
+  this.initialize();
 };
 
-// vagabond_map.initialize = function 
+//vagabond_map.map = map;
 
-function initialize() {
+vagabond_map.initialize = function() {
 	geocoder = new google.maps.Geocoder();
 	var startLat = 37.776427;
 	var startLong =  -122.424554;
@@ -47,11 +47,11 @@ function initialize() {
             }
   ];
     map.setOptions({styles: styles});
-    codeAddress();
+    this.codeAddress();
     //map_search();
 } //END INITIALIZE
 
-function codeAddress() {
+vagabond_map.codeAddress = function() {
   counter = 1;
 	console.log('coding address' + counter);
   counter = counter + 1;
@@ -64,11 +64,11 @@ function codeAddress() {
           position: results[0].geometry.location
       });
   });
-  map_search();
+  this.map_search();
 };
 //////////////////////////////////////////////////////
 
-function map_search() {
+vagabond_map.map_search = function() {
 
   var markers = [];
   // Create the search box and link it to the UI element.
@@ -118,7 +118,5 @@ function map_search() {
     searchBox.setBounds(bounds);
   });
 }
-
-
 
 
