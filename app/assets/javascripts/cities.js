@@ -113,6 +113,7 @@ vagabond_map.map_search = function() {
       });
       //push these into the marker array
       markers.push(marker);
+      console.log(markers);
       bounds.extend(place.geometry.location);
     }
     self.map.fitBounds(bounds);
