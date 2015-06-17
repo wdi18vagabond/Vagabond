@@ -39,8 +39,6 @@ vagabond_map.ready = function() {
 
 vagabond_map.initialize = function() {
 	this.geocoder = new google.maps.Geocoder();
-	var startLat = 37.776427;
-	var startLong =  -122.424554;
 
   this.map = new google.maps.Map(document.getElementById('map-canvas'), {
     zoom: 12,
@@ -52,7 +50,7 @@ vagabond_map.initialize = function() {
     this.map.setOptions({styles: this.styles});
     this.codeAddress();
     //map_search();
-} //END INITIALIZE
+};//END INITIALIZE
 
 vagabond_map.codeAddress = function() {
   counter = 1;
@@ -62,7 +60,14 @@ vagabond_map.codeAddress = function() {
   var self = this;
   this.geocoder.geocode( { 'address': address}, function(results, status) {
       console.log(results);
+      console.log(results[0].geometry.location);
+      console.log(results[0].geometry.location["A"])
+      console.log(results[0].geometry.location["F"])
+
+
       self.map.setCenter(results[0].geometry.location);
+     
+
       var marker = new google.maps.Marker({
           map: vagabond_map.map,
           position: results[0].geometry.location
