@@ -1,13 +1,13 @@
-<h3>Profile</h3>
-<h1>Hello, <%= @user.first_name %></h1>
-<div>Current City: <%= @user.city %></div>
-
+<div class="col-md-3">
+<h1><%= @user.username %></h1>
 <%= image_tag gravatar_url(@user.email, 200), alt: "" %>
-<p><%= @user.username %></p>
+
+<p><%= @user.first_name + " " + @user.last_name %></p>
+<p><%= @user.city %></p>
 <p>Joined <%= @user.created_at.strftime("%B %Y") %><p>
 
 <% if current_user == @user %>
-  <%= link_to "Edit", edit_user_path(@user) %>
+  <%= link_to "Edit Profile", edit_user_path(@user) %>
 <% end %>
 
 <% @user.stories.each do |s| %>
