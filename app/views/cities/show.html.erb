@@ -15,10 +15,8 @@
     	      }
     </style>
 
-		<div id="map-canvas"></div>
-		<input id="pac-input" class="controls" type="text" placeholder="Search for an address">
+		<div id="map-canvas"><input id="pac-input" class="controls" type="text" placeholder="Search for an address"></div>
 		
-
 		<div id="city_name"><h2><%= @city.name %></h1></div>
 
 		<% @city.stories.order("created_at DESC").each do |s| %>
