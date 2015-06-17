@@ -2,12 +2,12 @@
 
 
   <% if flash[:notice] %>
-    <div class="alert alert-danger col-md-6" role="alert">
+    <div class="alert alert-danger col-md-12" role="alert">
       <%= flash[:notice] %>
     </div>
   <% end %>
 
-  <%= form_for @user, html: { class: "form-group"} do |f| %>
+  <%= form_for @user, url: "/sessions", method: "post", html: { class: "form-group"} do |f| %>
 
     
     <div class="form-group col-md-6 " >
