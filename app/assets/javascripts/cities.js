@@ -1,32 +1,14 @@
 /* Custom ready function is required for jQuery click events to work after page render.  Turbolinks disables full page load.  */
 var ready;
-var address;
+var address = $('#city_name h2').text();
 var vagabond_map = {};
 var map;
 var geocoder;
 
 vagabond_map.map = map;
 vagabond_map.geocoder = geocoder;
-
-vagabond_map.ready = function() {
-	address = $('#city_name h2').text();
-  console.log(address, "THIS IS ADDRESS")
-  this.initialize();
-};
-
-vagabond_map.initialize = function() {
-	this.geocoder = new google.maps.Geocoder();
-	var startLat = 37.776427;
-	var startLong =  -122.424554;
-
-  this.map = new google.maps.Map(document.getElementById('map-canvas'), {
-    zoom: 12,
-    minZoom: 12,
-    maxZoom: 16,
-    zoomControl: false
-  });
-
-  var styles = [
+vagabond_map.address = address;
+vagabond_map.styles = [
             {
               stylers: [
                 { hue: "#235BA7" },
@@ -47,7 +29,27 @@ vagabond_map.initialize = function() {
               ]
             }
   ];
-    this.map.setOptions({styles: styles});
+
+vagabond_map.ready = function() {
+  console.log(address, "THIS IS THE ADDRESS")
+  vagabond_map.input = (document.getElementById('pac-input'));
+  vagabond_map.search_box = new google.maps.places.SearchBox((this.input));
+  this.initialize();
+};
+
+vagabond_map.initialize = function() {
+	this.geocoder = new google.maps.Geocoder();
+	var startLat = 37.776427;
+	var startLong =  -122.424554;
+
+  this.map = new google.maps.Map(document.getElementById('map-canvas'), {
+    zoom: 12,
+    minZoom: 10,
+    maxZoom: 16,
+    zoomControl: false
+  });
+
+    this.map.setOptions({styles: this.styles});
     this.codeAddress();
     //map_search();
 } //END INITIALIZE
@@ -74,15 +76,11 @@ vagabond_map.map_search = function() {
 
   var self = this;
   var markers = [];
-  // Create the search box and link it to the UI element.
-  var input = (document.getElementById('pac-input'));
-  this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(input);
-  var searchBox = new google.maps.places.SearchBox((input));
-
+  this.map.controls[google.maps.ControlPosition.TOP_RIGHT].push(this.input);
   // Listen for the event fired when the user selects an item from the
   // pick list. Retrieve the matching places for that item.
-  google.maps.event.addListener(searchBox, 'places_changed', function() {
-    var places = searchBox.getPlaces();
+  google.maps.event.addListener(self.search_box, 'places_changed', function() {
+    var places = self.search_box.getPlaces();
 
     if (places.length == 0) {
       return;
@@ -118,7 +116,7 @@ vagabond_map.map_search = function() {
   // current map's viewport.
   google.maps.event.addListener(vagabond_map.map, 'bounds_changed', function() {
     var bounds = vagabond_map.map.getBounds();
-    searchBox.setBounds(bounds);
+    self.search_box.setBounds(bounds);
   });
 }
 
