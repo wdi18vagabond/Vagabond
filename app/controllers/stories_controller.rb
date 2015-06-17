@@ -25,6 +25,7 @@ class StoriesController < ApplicationController
 
   # GET /stories/1/edit
   def edit
+    
   end
 
   # POST /stories
@@ -61,7 +62,7 @@ class StoriesController < ApplicationController
   def destroy
     @story.destroy
     respond_to do |format|
-      format.html { redirect_to stories_url, notice: 'Story was successfully destroyed.' }
+      format.html { redirect_to cities_path, notice: 'Story was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
