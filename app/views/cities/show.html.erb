@@ -1,12 +1,50 @@
-<h1><%= @city.name %></h1>
 
-<% @city.stories.order("created_at DESC").each do |s| %>
-	<div>
-		<h2><%= link_to s.title, story_path(s) %></h2>
-	</div>
-	<div>
-		<h4><%=h truncate(s.body, :length =>70) %></h4>
-	</div>
-<% end %>
+  	
+    <style type="text/css">
+      html, body, #map-canvas { height: 80%; margin: 0; padding: 0;}
+    </style>
+    <style type="text/css">
+      #map-canvas { margin-top: 51px; z-index: 1;}
+    </style>
+    <style type="text/css">
+    	#panel {
+    	        position: relative;
+    	        z-index: 5;
+    	        background-color: #fff;
+    	        padding: 5px;
+    	        border: 1px solid #999;
+    	      }
+    </style>
 
-New Post: <%= link_to "New Post", new_story_path %>
+		<div id="map-canvas"></div>
+		<div id="panel" style="display:none">
+		  <input id="address" type="textbox" value="Sydney, NSW">
+		  <input type="button" value="Geocode">
+		</div>
+		
+		<div id="city_name"><h2><%= @city.name %></h1></div>
+
+		<% @city.stories.order("created_at DESC").each do |s| %>
+			<div>
+				<h2><%= link_to s.title, story_path(s) %></h2>
+			</div>
+			<div>
+				<h4><%=h truncate(s.body, :length =>70) %></h4>
+			</div>
+		<% end %>
+
+		New Post: <%= link_to "New Post", new_story_path %>
+
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhvWvwmJ8clstnuG4S4I2JeCb6bvDF824&libraries=places"></script>
+		<%= javascript_include_tag "cities", "data-turbolinks-track" => true %>
+		
+
+		
+		<!-- <input id="pac-input" class="controls" type="text" placeholder="Search for an address"> -->
+		
+
+
+
+
+
+
