@@ -1,3 +1,14 @@
 // Place all the styles related to the landing_page controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.background {
+  height: 100vh;
+  width: 100vw;
+  background-image: url('http://apassportaffair.com/wp-content/uploads/2014/08/o-ROAD-TRIP-facebook.jpg');
+  background-size: cover;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -999;
+}
