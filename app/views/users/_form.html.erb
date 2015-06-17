@@ -1,15 +1,58 @@
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
 
-<%= form_for user do |f| %>
-  <%= f.text_field :username, placeholder: "Username" %>
-  <%= f.email_field :email, placeholder: "Email" %>
-  <%= f.email_field :email, placeholder: "Confirm Email" %>
-  <%= f.text_field :first_name, placeholder: "First Name" %>
-  <%= f.text_field :last_name, placeholder: "Last Name" %>
-  <%= f.text_field :city, placeholder: "Current City" %>
-  <%= f.password_field :password, placeholder: "password" %>
-  <%= f.password_field :password_confirmation, placeholder: "confirm password" %>
-  <%= f.submit %>
-<% end %>
+
+    
+    <% if flash[:notice] %>
+      <div class="alert alert-danger col-md-6" role="alert">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
+    <%= form_for user, html: { class: "form-group"} do |f| %>
+
+      
+      <div class="form-group col-md-6 " >
+          <label>Username</label>
+          <%= f.text_field :username, placeholder: "Username", class: "form-control" %>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Home City</label>        
+        <%= f.text_field :city, placeholder: "San Francisco", class: "form-control" %>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>First Name</label>
+        <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Last Name</label>
+        <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Email</label>
+        <%= f.email_field :email, placeholder: "Email", class: "form-control " %> 
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Confirm Email</label>
+        <%= f.email_field :email, placeholder: "Confirm Email", class: "form-control" %>
+      </div>  
+
+      <div class="form-group col-md-6">
+        <label>Password</label>
+        <%= f.password_field :password, placeholder: "password", class: "form-control" %>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label>Confirm Password</label>
+        <%= f.password_field :password_confirmation, placeholder: "confirm password", class: "form-control" %>
+      </div>
+      
+      <div class="col-md-6">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    
+    <% end %>
+  </form>
