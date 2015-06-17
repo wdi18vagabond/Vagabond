@@ -1,39 +1,44 @@
+<h3 class="col-md-12">
+  Post to: <%= story.city.name %>
+  <hr class="colorgraph">
+</h3>
 
+  <br>
 
+  <%= form_for story do |f| %>
+    <% if story.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
+        
+        <ul>
+          <% @story.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+        
+      </div>
+    <% end %>
 
-<h3 class="form-sign-in-heading"> Post to: <%= story.city.name %></h3>
-
-
-<div class = "container">
-  <div class="wrapper">
-
-
-  <hr class="colorgraph"><br>
-<%= form_for story do |f| %>
-  <% if story.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
-      <ul>
-      <% @story.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+    <div class="form-group col-md-6">
+      <label>Title</label>        
+      <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
     </div>
+
+    <div class="form-group col-md-6">
+      <label>Title</label>   
+      <%= f.text_area :body, placeholder: "Body", class: "form-control" %>   
+      <%= f.hidden_field :city_id, :value => params[:id] %>
+    </div>
+    
+    
+    
+    <div class="form-group col-sm-12">
+      <%= f.submit class: "btn btn-sm btn-primary col-sm-2" %>
+    </div>
+
+      <%= link_to 'Show', @story, class: "col-sm-1" %>
+      <%= link_to 'Back', stories_path, class: "col-sm-1 "  %>
+      <td><%= link_to 'Delete', story, method: :delete, data: { confirm: 'Are you sure?' }, class: "col-sm-1 pull-right" %></td>
+
   <% end %>
-  <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
-  <%= f.text_area :body, placeholder: "Body", class: "form-control" %>
-  <%= f.hidden_field :city_id, :value => params[:id] %>
-  <div class="actions">
-    <%= f.submit class: "btn btn-sm btn-primary" %>
-  </div>
-<% end %>
-  </div>
 </div>
-
-
-
-
-         
-              
-       
-
