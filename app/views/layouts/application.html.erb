@@ -10,12 +10,9 @@
 <body>
   <%= render partial: "layouts/navbarin", locals: {user: @user} %>
 
-  <!-- CONTAINER START -->
   <div class="container">
+  <%= yield %>
   </div>
-  <!-- CONTAINER END -->
 
-<%= yield %>
-<% console %>
 </body>
 </html>
