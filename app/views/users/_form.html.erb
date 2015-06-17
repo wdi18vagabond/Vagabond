@@ -1,11 +1,10 @@
-    <% if flash[:notice] %>
-      <div class="alert alert-danger col-md-12" role="alert">
-        <%= flash[:notice] %>
-      </div>
-    <% end %>
-
     <%= form_for user, html: { class: "form-group"} do |f| %>
-
+      
+      <% if flash[:notice] %>
+        <div class="alert alert-danger col-md-12" role="alert">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
       
       <div class="form-group col-md-6 " >
           <label>Username</label>
