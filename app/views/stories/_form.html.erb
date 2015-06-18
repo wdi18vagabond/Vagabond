@@ -1,20 +1,39 @@
-<%= form_for(@story) do |f| %>
-  <% if @story.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@story.errors.count, "error") %> prohibited this story from being saved:</h2>
+  <%= form_for story do |f| %>
+    <% if story.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(story.errors.count, "error") %> prohibited this story from being saved:</h2>
 
-      <ul>
-      <% @story.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+          <% @story.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+
+      </div>
+    <% end %>
+
+    <div class="form-group col-md-6">
+      <label>Title</label>
+      <%= f.text_field :title, placeholder: "Title", class: "form-control" %>
     </div>
+
+    <div class="form-group col-md-6">
+      <label>Title</label>
+      <%= f.text_area :body, placeholder: "Body", class: "form-control" %>
+    </div>
+
+    <% if story.city_id == nil %>
+      <%= f.hidden_field :city_id, :value => params[:id] %>
+    <% end %>
+
+    <div class="form-group col-sm-12">
+      <%= f.submit class: "btn btn-sm btn-primary col-sm-2" %>
+    </div>
+
+    <div class="form-group">
+      <%= link_to "Cancel", "javascript:history.go(-1);", class: "col-sm-1" %>
+      <%= link_to 'Delete', story, method: :delete, data: { confirm: 'Are you sure?' }, class: "col-sm-1 pull-right" %>
+    </div>
+
   <% end %>
-
-  <%= f.text_field :title, placeholder: "Title" %>
-  <%= f.text_area :body, placeholder: "Body" %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

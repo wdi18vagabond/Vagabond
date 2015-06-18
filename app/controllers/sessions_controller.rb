@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -10,6 +11,7 @@ class SessionsController < ApplicationController
       sign_in(@user)
       redirect_to user_path(@user)
     else
+      flash[:notice] = "Could not match email and password"
       redirect_to sign_in_path
     end
 
