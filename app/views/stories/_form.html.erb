@@ -30,7 +30,10 @@
       <%= f.submit class: "btn btn-sm btn-primary col-sm-2" %>
     </div>
 
-      <td><%= link_to 'Delete', story, method: :delete, data: { confirm: 'Are you sure?' }, class: "col-sm-1 pull-right" %></td>
+    <div class="form-group">
+      <%= link_to "Cancel", "javascript:history.go(-1);", class: "col-sm-1" %>
+      <%= link_to 'Delete', story, method: :delete, data: { confirm: 'Are you sure?' }, class: "col-sm-1 pull-right" %>
+    </div>
 
   <% end %>
 </div>
