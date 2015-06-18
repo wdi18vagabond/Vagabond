@@ -28,17 +28,13 @@ $color-primary-rgba: rgba( 44, 62, 80,1);
 $color-secodary-rgba: rgba( 97,116,135,1);
 $color-tertiary-rgba: rgba( 66, 88,110,1);
 
-// .navbar-inverse .navbar-nav > li > a {
-//   color:$white;
-// }
-
 // Navbar/Sidebar
 .navbar, .navbar-fixed-top, .navbar-inverse, .navbar-inverse .navbar-nav {
   background-color: $color-primary;
   color: $white;
 
   li a {
-    color: $white
+    color: $white;
   }
 }
 

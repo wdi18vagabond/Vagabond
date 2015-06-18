@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  resources :stories, except: :new
  resources :cities
 
- root to: "users#index"
+ root to: "sites#index"
  get "/sign_in", to: "sessions#new"
  delete "/users", to: "users#destroy", as: "delete_user"
  delete "/sessions", to: "sessions#destroy", as: "sign_out"
@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
 end
 
+#       Prefix Verb   URI Pattern                  Controller#Action
+#  sites_index GET    /sites/index(.:format)       sites#index
 #        users GET    /users(.:format)             users#index
 #              POST   /users(.:format)             users#create
 #     new_user GET    /users/new(.:format)         users#new
@@ -28,7 +30,6 @@ end
 #              PUT    /sessions/:id(.:format)      sessions#update
 #      stories GET    /stories(.:format)           stories#index
 #              POST   /stories(.:format)           stories#create
-#    new_story GET    /stories/new(.:format)       stories#new
 #   edit_story GET    /stories/:id/edit(.:format)  stories#edit
 #        story GET    /stories/:id(.:format)       stories#show
 #              PATCH  /stories/:id(.:format)       stories#update
@@ -46,3 +47,4 @@ end
 #      sign_in GET    /sign_in(.:format)           sessions#new
 #  delete_user DELETE /users(.:format)             users#destroy
 #     sign_out DELETE /sessions(.:format)          sessions#destroy
+   # new_story GET    /cities/new/:id(.:format)    stories#new
