@@ -1,6 +1,12 @@
-<h1>Editing Story</h1>
+<h3 class="col-md-12">
+  Post to: <%= @story.city.name %>
+  <hr class="colorgraph">
+</h3>
 
-<%= render 'form' %>
+<h1 class="col-md-12">Edit Story</h1>
 
-<%= link_to 'Show', @story %> |
-<%= link_to 'Back', stories_path %>
+<%= render partial: 'stories/form', locals: {story: @story} %>
+
+<div class="form-group">
+  <%= link_to 'Back', user_path(@user), class: "col-sm-1"  %>
+</div>
