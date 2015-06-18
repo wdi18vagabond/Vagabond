@@ -21,7 +21,6 @@ class StoriesController < ApplicationController
     set_city
     @story = Story.new
     # redirect_to new_story_path
-
   end
 
   # GET /stories/1/edit

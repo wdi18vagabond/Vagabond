@@ -150,19 +150,7 @@ vagabond_map.map_search = function() {
               console.log(res[i].place_id);
               if (res[i].place_id === current_place) {
 
-                // $stories_body.text(res[i].body);
-                // $stories_title.text(res[i].title);
-                
-
-                // $stories_list.text(res[i].body);
-                // $stories_list.text(res[i].title);
-
-                // $('.title h2 a')[0].text(res[i].title);
-                // $('.body h4')[0].innerHTML(res[i].body);
-
-
-                // $('.body h2').text(res[i].body);
-                // $('.title h4').text(res[i].title);
+                $stories_list.prepend("<div class='stories_title'>" + res[i].title + "</div>" + "<div class='stories_body'>" + res[i].body + "</div>");
 
               }
             });

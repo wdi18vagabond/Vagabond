@@ -4,6 +4,8 @@
 
 /*CONTENT*/
 
+$color-primary: #2C3E50;
+
 .container {
   height: 0px;
 }
@@ -85,4 +87,15 @@
   font-family: Roboto;
   font-size: 13px;
   font-weight: 300;
+}
+
+.stories_title {
+  font-size: 1.5em;
+  color: #337AB7;
+}
+
+.stories_body {
+  font-size: 1em;
+  margin-bottom:2em;
+
 }
