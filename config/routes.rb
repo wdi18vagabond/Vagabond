@@ -8,13 +8,12 @@ Rails.application.routes.draw do
  get "/sign_in", to: "sessions#new"
  delete "/users", to: "users#destroy", as: "delete_user"
  delete "/sessions", to: "sessions#destroy", as: "sign_out"
+ # get "/stories/new", to: "stories#new", as: "new_story"
 
  get "cities/new/:id", to: "stories#new", as: "new_story"
 
 end
 
-#       Prefix Verb   URI Pattern                  Controller#Action
-#  sites_index GET    /sites/index(.:format)       sites#index
 #        users GET    /users(.:format)             users#index
 #              POST   /users(.:format)             users#create
 #     new_user GET    /users/new(.:format)         users#new
@@ -43,8 +42,8 @@ end
 #              PATCH  /cities/:id(.:format)        cities#update
 #              PUT    /cities/:id(.:format)        cities#update
 #              DELETE /cities/:id(.:format)        cities#destroy
-#         root GET    /                            users#index
+#         root GET    /                            sites#index
 #      sign_in GET    /sign_in(.:format)           sessions#new
 #  delete_user DELETE /users(.:format)             users#destroy
 #     sign_out DELETE /sessions(.:format)          sessions#destroy
-   # new_story GET    /cities/new/:id(.:format)    stories#new
+#    new_story GET    /cities/new/:id(.:format)    stories#new

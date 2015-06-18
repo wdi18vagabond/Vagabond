@@ -6,12 +6,19 @@
     <div class="content-container">
       <div class="container">
   		  <div id="city_name"><h2><%= @city.name %></h2></div>
+          <div id="place_name"><h4></h4></div>
+          <div id="stories_list">
     		<% @city.stories.order("created_at DESC").each do |s| %>
     			<div>
+                    <div class="title">
     				<h2><%= link_to s.title, story_path(s) %></h2>
+                    </div>
+                    <div class="body">
     				<h4><%=h truncate(s.body, :length =>70) %></h4>
+                    </div>
     			</div>
     		<% end %>
+          </div>
 
     		New Post: <%= link_to "New Post", new_story_path %>
         </div>

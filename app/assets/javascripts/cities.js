@@ -8,6 +8,11 @@ var markers = [];
 var places;
 var geocoder;
 
+var $stories_list = $('#stories_list');
+var $stories_title = $('#title');
+var $stories_body = $('#body');
+
+
 vagabond_map.map = map;
 vagabond_map.puppy = "http://www.lindyop.com/ESW/Images/puppy.png";
 vagabond_map.markers = markers;
@@ -134,7 +139,34 @@ vagabond_map.map_search = function() {
         console.log(that.title);
         console.log(that.name);
         console.log(that.place_id);
+        var current_place = that.place_id;
         $address_bar.text(that.name);
+        $stories_list.text('');
+
+        $.get('/stories', {place_id: that.place_id}, function (res) {
+          console.log(res);
+          $.each(res, 
+            function (i, index) {
+              console.log(res[i].place_id);
+              if (res[i].place_id === current_place) {
+
+                // $stories_body.text(res[i].body);
+                // $stories_title.text(res[i].title);
+                
+
+                // $stories_list.text(res[i].body);
+                // $stories_list.text(res[i].title);
+
+                // $('.title h2 a')[0].text(res[i].title);
+                // $('.body h4')[0].innerHTML(res[i].body);
+
+
+                // $('.body h2').text(res[i].body);
+                // $('.title h4').text(res[i].title);
+
+              }
+            });
+        });
       });
 
       self.markers.push(marker);
