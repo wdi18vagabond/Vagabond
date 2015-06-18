@@ -2,13 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.background {
-  height: 100vh;
-  width: 100vw;
-  background-image: url('http://apassportaffair.com/wp-content/uploads/2014/08/o-ROAD-TRIP-facebook.jpg');
-  background-size: cover;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -999;
+video { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: -999;
+    // background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat;
+    background-size: cover;
+    transition: 1s opacity;
+} 
+
+
+#home-cta, #home-cta h1{
+  margin-top: 2em;
+  background-color: transparent;
+  color: #FFF;
+}
+
+div#home-cta {
+  padding-left: 0;
 }

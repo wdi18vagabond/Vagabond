@@ -47,4 +47,3 @@ end
 #  delete_user DELETE /users(.:format)                users#destroy
 #     sign_out DELETE /sessions(.:format)             sessions#destroy
 #    new_story GET    /city/:id/stories/new(.:format) stories#new
-

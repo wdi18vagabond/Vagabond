@@ -18,9 +18,26 @@
 @import "bootstrap";
 
 
+// COLOR PALLETE
+$color-primary: #2C3E50;
+$color-secodary: #617487 ;
+$color-tertiary: #42586E ;
+$white: #FFF;
 
+$color-primary-rgba: rgba( 44, 62, 80,1);
+$color-secodary-rgba: rgba( 97,116,135,1);
+$color-tertiary-rgba: rgba( 66, 88,110,1);
 
 // Navbar/Sidebar
+.navbar, .navbar-fixed-top, .navbar-inverse, .navbar-inverse .navbar-nav {
+  background-color: $color-primary;
+  color: $white;
+
+  li a {
+    color: $white;
+  }
+}
+
 body {
           padding-top: 50px;
           position: relative;
