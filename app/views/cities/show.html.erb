@@ -1,29 +1,22 @@
-	<div id="map-container">
+<div id="map-container">
     <div id="map-canvas"></div>
     <input id="pac-input" class="controls" type="text" placeholder="Search for an address">
-  </div>
-  
-    <div class="content-container">
-      <div class="container">
-  		  <div id="city_name"><h2><%= @city.name %></h2></div>
-          <div id="place_name"><h4></h4></div>
-          <div id="stories_list">
-    		<% @city.stories.order("created_at DESC").each do |s| %>
-    			<div>
-                    <div class="title">
-    				<h2><%= link_to s.title, story_path(s) %></h2>
-                    </div>
-                    <div class="body">
-    				<h4><%=h truncate(s.body, :length =>70) %></h4>
-                    </div>
-    			</div>
-    		<% end %>
-          </div>
 
-    		New Post: <%= link_to "New Post", new_story_path %>
+<div class="content-container">
+<div class="container">
+    <div id="city_name" class="col-sm-10", id: "city"><h2><%= @city.name %></h2></div>
+    <%= button_to "New Post", new_story_path, method: "get", class: "btn btn-default col-sm-2", id: "new-post-bttn" %>
+
+    <% @city.stories.order("created_at DESC").each do |s| %>
+        <div class="col-md-12">
+            <h2><%= link_to s.title, story_path(s) %></h2>
+            <h4><%=h truncate(s.body, :length =>70) %></h4>
         </div>
-    </div>
+    <% end %>
 
-		<!-- FLKJSDFLKJSDf -->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhvWvwmJ8clstnuG4S4I2JeCb6bvDF824&libraries=places&callback=vagabond_map.ready"></script>
-		<%= javascript_include_tag "cities", "data-turbolinks-track" => true %>
+    
+    </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhvWvwmJ8clstnuG4S4I2JeCb6bvDF824&libraries=places&callback=vagabond_map.ready"></script>
+<%= javascript_include_tag "cities", "data-turbolinks-track" => true %>
