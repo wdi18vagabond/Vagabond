@@ -4,17 +4,17 @@
   </div>
   
     <div class="content-container">
-		  <div id="city_name"><h2><%= @city.name %></h2></div>
-  		<% @city.stories.order("created_at DESC").each do |s| %>
-  			<div>
-  				<h2><%= link_to s.title, story_path(s) %></h2>
-  			</div>
-  			<div>
-  				<h4><%=h truncate(s.body, :length =>70) %></h4>
-  			</div>
-  		<% end %>
+      <div class="container">
+  		  <div id="city_name"><h2><%= @city.name %></h2></div>
+    		<% @city.stories.order("created_at DESC").each do |s| %>
+    			<div>
+    				<h2><%= link_to s.title, story_path(s) %></h2>
+    				<h4><%=h truncate(s.body, :length =>70) %></h4>
+    			</div>
+    		<% end %>
 
-  		New Post: <%= link_to "New Post", new_story_path %>
+    		New Post: <%= link_to "New Post", new_story_path %>
+        </div>
     </div>
 
 		<!-- FLKJSDFLKJSDf -->

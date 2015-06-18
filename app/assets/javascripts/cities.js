@@ -109,6 +109,7 @@ vagabond_map.map_search = function() {
         position: place.geometry.location
       });
       //push these into the marker array
+
       self.markers.push(marker);
       bounds.extend(place.geometry.location);
     }
