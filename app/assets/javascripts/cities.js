@@ -1,6 +1,7 @@
 /* Custom ready function is required for jQuery click events to work after page render.  Turbolinks disables full page load.  */
 var ready;
 var address = $('#city_name h2').text();
+var $address_bar = $('#city_name h2');
 var vagabond_map = {};
 var map;
 var markers = [];
@@ -92,7 +93,22 @@ vagabond_map.map_search = function() {
     }
     // For each place, get the icon, place name, and location.
     self.markers = [];
+    vagabond_map.current_markers = [];
+
     var bounds = new google.maps.LatLngBounds();
+
+    self.places.forEach(function (v, i) {
+      for(key in v) {
+        if (key === "name") {
+          vagabond_map.current_markers.push({name : v[key]});
+          //console.log(i);
+        }
+        if (key === "place_id") {
+          vagabond_map.current_markers[i].place_id = v[key];
+        }
+      }
+    });
+
     for (var i = 0, place; place = self.places[i]; i++) {
       var image = {
         url: place.icon,
@@ -106,25 +122,36 @@ vagabond_map.map_search = function() {
         map: vagabond_map.map,
         icon: image,
         title: place.name,
-        position: place.geometry.location
+        position: place.geometry.location,
+        place_id: self.places[i].place_id,
+        name: self.places[i].name
       });
-      google.maps.event.addListener(marker, 'click', function() {
-        console.log('CLICKED');
-        // console.log(this);
-        // console.log(this.placeId + 'HERE I AM');
-        // console.log(this.title);
+      ///////
+      google.maps.event.addListener(marker, 'click', function (e) {
+        console.log('clicked');
+        var that = this;
+        console.log(that.position);
+        console.log(that.title);
+        console.log(that.name);
+        console.log(that.place_id);
+        $address_bar.text(that.name);
       });
-      //push these into the marker array
 
       self.markers.push(marker);
-      console.log('SELF MARKERS FIRST LOOP RESULTS BELOW');
-      console.log(self.markers);
+      //finish building vagabond_map.current_markers
+      vagabond_map.current_markers[i].position = {};
+      vagabond_map.current_markers[i].position['A'] = self.markers[i]["position"]["A"];
+      vagabond_map.current_markers[i].position['F'] = self.markers[i]["position"]["F"];
       bounds.extend(place.geometry.location);
     }
+    console.log('GOOGLE MAPS BELOW');
+    console.log(google.maps);
+   
+    ///END OF MARKER LOOP
+    console.log(vagabond_map.current_markers);
     self.map.fitBounds(bounds);
-    self.gather_places();
-  }); // END SEARCHBOX ON CHANGE LISTENER
-
+  }); 
+  // END SEARCHBOX ON CHANGE LISTENER
 
   // Bias the SearchBox results towards places that are within the bounds of the
   // current map's viewport.
@@ -134,48 +161,6 @@ vagabond_map.map_search = function() {
   });
 }// END map_search
 
-vagabond_map.gather_places = function () {
-  this.current_markers = [];
-  this.places.forEach(function (v, i) {
-    for(key in v) {
-      if (key === "name") {
-        vagabond_map.current_markers.push({name : v[key]});
-        //console.log(i);
-      }
-      if (key === "place_id") {
-        vagabond_map.current_markers[i].place_id = v[key];
-      }
-    }
-  });
-  
-  for (var i = 0, place; place = vagabond_map.places[i]; i++) {
-    var image = {
-      url: place.icon,
-      size: new google.maps.Size(71, 71),
-      origin: new google.maps.Point(0, 0),
-      anchor: new google.maps.Point(17, 34),
-      scaledSize: new google.maps.Size(25, 25)
-    };
-    // Create a marker for each place.
-    var marker = new google.maps.Marker({
-      map: vagabond_map.map,
-      icon: image,
-      title: place.name,
-      position: place.geometry.location
-    });
-    // console.log(marker.position);
-    //push these into the marker array
-    self.markers.push(marker);
-    console.log('SELF MARKERS 2nd LOOP BELOW');
-    console.log(self.markers);
 
-    vagabond_map.current_markers[i].position = {};
-    vagabond_map.current_markers[i].position['A'] = self.markers[i]["position"]["A"];
-    vagabond_map.current_markers[i].position['F'] = self.markers[i]["position"]["F"];
-    //Optional for re rendering
-    //bounds.extend(place.geometry.location);
-  }
-  console.log(this.current_markers, this.current_markers.length);
-};
 
 
