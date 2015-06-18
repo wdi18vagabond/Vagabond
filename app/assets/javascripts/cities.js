@@ -108,9 +108,17 @@ vagabond_map.map_search = function() {
         title: place.name,
         position: place.geometry.location
       });
+      google.maps.event.addListener(marker, 'click', function() {
+        console.log('CLICKED');
+        // console.log(this);
+        // console.log(this.placeId + 'HERE I AM');
+        // console.log(this.title);
+      });
       //push these into the marker array
 
       self.markers.push(marker);
+      console.log('SELF MARKERS FIRST LOOP RESULTS BELOW');
+      console.log(self.markers);
       bounds.extend(place.geometry.location);
     }
     self.map.fitBounds(bounds);
@@ -127,16 +135,15 @@ vagabond_map.map_search = function() {
 }// END map_search
 
 vagabond_map.gather_places = function () {
-  this.current_place_ids = [];
   this.current_markers = [];
   this.places.forEach(function (v, i) {
     for(key in v) {
       if (key === "name") {
-        vagabond_map.current_place_ids.push({name : v[key]});
+        vagabond_map.current_markers.push({name : v[key]});
         //console.log(i);
       }
       if (key === "place_id") {
-        vagabond_map.current_place_ids[i].place_id = v[key];
+        vagabond_map.current_markers[i].place_id = v[key];
       }
     }
   });
@@ -156,14 +163,18 @@ vagabond_map.gather_places = function () {
       title: place.name,
       position: place.geometry.location
     });
+    // console.log(marker.position);
     //push these into the marker array
     self.markers.push(marker);
-    vagabond_map.current_markers.push({latitude : self.markers[i]["position"]["A"]});
-    vagabond_map.current_markers[i].longitude = self.markers[i]["position"]["F"];
+    console.log('SELF MARKERS 2nd LOOP BELOW');
+    console.log(self.markers);
+
+    vagabond_map.current_markers[i].position = {};
+    vagabond_map.current_markers[i].position['A'] = self.markers[i]["position"]["A"];
+    vagabond_map.current_markers[i].position['F'] = self.markers[i]["position"]["F"];
     //Optional for re rendering
     //bounds.extend(place.geometry.location);
   }
-  console.log(this.current_place_ids, this.current_place_ids.length);
   console.log(this.current_markers, this.current_markers.length);
 };
 
