@@ -8,14 +8,18 @@
     <div id="city_name" class="col-sm-10", id: "city"><h2><%= @city.name %></h2></div>
     <%= button_to "New Post", new_story_path, method: "get", class: "btn btn-default col-sm-2", id: "new-post-bttn" %>
 
-    <% @city.stories.order("created_at DESC").each do |s| %>
-        <div class="col-md-12">
-            <h2><%= link_to s.title, story_path(s) %></h2>
-            <h4><%=h truncate(s.body, :length =>70) %></h4>
-        </div>
-    <% end %>
-
-    
+          <div id="stories_list">
+           <% @city.stories.order("created_at DESC").each do |s| %>
+               <div class="col-md-12">
+                    <div class="title">
+                        <h2><%= link_to s.title, story_path(s) %></h2>
+                    </div>
+                    <div class="body">
+                        <h4><%=h truncate(s.body, :length =>70) %></h4>
+                    </div>
+                </div>
+           <% end %>
+          </div>
     </div>
 </div>
 

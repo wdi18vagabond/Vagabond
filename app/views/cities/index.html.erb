@@ -1,7 +1,7 @@
-<h1>CITIES</h1>
+<h1 class="col-md-12">CITIES</h1>
 
-<ul>
+<ul class="col-md-12">
 <% @cities.each do |c| %>
-	<div><%= link_to c.name, city_path(c) %></div>
+	<h3 ><%= link_to c.name, city_path(c) %></h3>
 <% end %>
 </ul>
