@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :stories, except: :new
   resources :cities
 
-  root to: "users#index"
+  root to: "sites#index"
   get "/sign_in", to: "sessions#new"
   delete "/users", to: "users#destroy", as: "delete_user"
   delete "/sessions", to: "sessions#destroy", as: "sign_out"
