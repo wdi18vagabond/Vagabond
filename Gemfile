@@ -33,6 +33,8 @@ gem 'bcrypt', '~> 3.1.7'
 # Console
 gem 'pry-rails'
 
+gem 'dotenv'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
