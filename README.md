@@ -18,18 +18,18 @@ From Profile page user can see their Picture provided by Gravatar (or default if
 
 ##Tech Used
 
-rails
-pg
-bootstrap-sass
-sass-rails
-jquery-rails
-sdoc
-bcrypt
-pry-rails
-dotenv
-byebug
-web-console
-spring
+-rails
+-pg
+-bootstrap-sass
+-sass-rails
+-jquery-rails
+-sdoc
+-bcrypt
+-pry-rails
+-dotenv
+-byebug
+-web-console
+-spring
 
 
 
