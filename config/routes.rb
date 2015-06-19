@@ -15,7 +15,6 @@ Rails.application.routes.draw do
 end
 
 
-
 #       Prefix Verb   URI Pattern                     Controller#Action
 #        users GET    /users(.:format)                users#index
 #              POST   /users(.:format)                users#create
