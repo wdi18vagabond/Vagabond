@@ -26,3 +26,16 @@ From Profile page user can see their Picture provided by Gravatar (or default if
 6. pry
 7. web-console
 
+-rails
+-pg
+-bootstrap-sass
+-sass-rails
+-jquery-rails
+-sdoc
+-bcrypt
+-pry-rails
+-dotenv
+-byebug
+-web-console
+-spring
+
