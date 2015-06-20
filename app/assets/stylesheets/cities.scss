@@ -13,7 +13,7 @@ $color-primary: #2C3E50;
 .content-container {
   background-color: rgba(255, 255, 255, 0.9);
   width: 100vw;
-  min-height: 100vh;
+  min-height: 500vh;
   padding-top: .5em;
   position: absolute;
   left: 0;
@@ -103,5 +103,22 @@ $color-primary: #2C3E50;
 .stories_body {
   font-size: 1em;
   margin-bottom:2em;
-
 }
+
+#stories_list {
+  margin-top: 74px;
+}
+
+#new-post-bttn {
+  text-align: center;
+  padding: 4px;
+}
+
+.user_img_city_posts {
+  width: 5em;
+  height: 5em;
+  border-radius: 50px;
+  margin-right: 1em;
+  margin-top: 1.25em;
+}
+

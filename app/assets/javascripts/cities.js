@@ -101,7 +101,8 @@ vagabond_map.map_search = function() {
     vagabond_map.current_markers = [];
 
     var bounds = new google.maps.LatLngBounds();
-
+///////////
+///////////
     self.places.forEach(function (v, i) {
       for(key in v) {
         if (key === "name") {
