@@ -41,8 +41,7 @@ vagabond_map.styles = [
             }
   ];
 
-vagabond_map.ready = function() {
-  console.log(address, "THIS IS THE ADDRESS")
+vagabond_map.ready = function() {  
   vagabond_map.input = (document.getElementById('pac-input'));
   vagabond_map.search_box = new google.maps.places.SearchBox((this.input));
   this.initialize();
@@ -62,14 +61,9 @@ vagabond_map.initialize = function() {
 
 vagabond_map.codeAddress = function() {
   counter = 1;
-	console.log('coding address' + counter);
-  counter = counter + 1;
-  console.log(address);
+  counter = counter + 1;  
   var self = this;
-  this.geocoder.geocode( { 'address': address}, function(results, status) {
-      console.log(results);
-      console.log(results[0].geometry.location["A"])
-      console.log(results[0].geometry.location["F"])
+  this.geocoder.geocode( { 'address': address}, function(results, status) {      
       self.map.setCenter(results[0].geometry.location);
       var marker = new google.maps.Marker({
           map: vagabond_map.map,
@@ -106,8 +100,7 @@ vagabond_map.map_search = function() {
     self.places.forEach(function (v, i) {
       for(key in v) {
         if (key === "name") {
-          vagabond_map.current_markers.push({name : v[key]});
-          //console.log(i);
+          vagabond_map.current_markers.push({name : v[key]});          
         }
         if (key === "place_id") {
           vagabond_map.current_markers[i].place_id = v[key];
@@ -133,22 +126,15 @@ vagabond_map.map_search = function() {
         name: self.places[i].name
       });
       ///////
-      google.maps.event.addListener(marker, 'click', function (e) {
-        console.log('clicked');
-        var that = this;
-        console.log(that.position);
-        console.log(that.title);
-        console.log(that.name);
-        console.log(that.place_id);
+      google.maps.event.addListener(marker, 'click', function (e) {        
+        var that = this;        
         var current_place = that.place_id;
         $address_bar.text(that.name);
         $stories_list.text('');
 
-        $.get('/stories', {place_id: that.place_id}, function (res) {
-          console.log(res);
+        $.get('/stories', {place_id: that.place_id}, function (res) {          
           $.each(res, 
-            function (i, index) {
-              console.log(res[i].place_id);
+            function (i, index) {              
               if (res[i].place_id === current_place) {
 
                 $stories_list.prepend("<div class='stories_title'>" + res[i].title + "</div>" + "<div class='stories_body'>" + res[i].body + "</div>");
@@ -165,11 +151,8 @@ vagabond_map.map_search = function() {
       vagabond_map.current_markers[i].position['F'] = self.markers[i]["position"]["F"];
       bounds.extend(place.geometry.location);
     }
-    console.log('GOOGLE MAPS BELOW');
-    console.log(google.maps);
    
-    ///END OF MARKER LOOP
-    console.log(vagabond_map.current_markers);
+    ///END OF MARKER LOOP    
     self.map.fitBounds(bounds);
   }); 
   // END SEARCHBOX ON CHANGE LISTENER
